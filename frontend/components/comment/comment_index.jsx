@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import CommentIndexItem from './comment_index_item';
+import CommentForm from '../comment_form/comment_form';
 
 class CommentIndex extends React.Component{
 
@@ -10,10 +11,10 @@ class CommentIndex extends React.Component{
   }
 
   renderComments(){
-    // let answers = this.props.question.answers;
-    // return answers.map((answer) => {
-    //   return <AnswerIndexItem key={answer.id} answer={answer} currentUser={this.props.currentUser} answerVotes={this.props.answerVotes} upvote={this.props.upvote} editUpvote={this.props.editUpvote}/>
-    // });
+    let comments = this.props.answer.comments;
+    return comments.map((comment) => {
+      return <CommentIndexItem key={comment.id} answer={answer} comment={comment} currentUser={this.props.currentUser} commentVotes={this.props.commentVotes} upvote={this.props.upvote} editUpvote={this.props.editUpvote}/>
+    });
   }
 
   render(){
@@ -22,6 +23,7 @@ class CommentIndex extends React.Component{
         <div id="comments-index">
           { this.renderComments() }
         </div>
+        <CommentForm postComment={this.props.postComment} currentUser={this.props.currentUser} errors={this.props.commentErrors}/>
       </div>
     );
   }

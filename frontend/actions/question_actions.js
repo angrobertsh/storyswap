@@ -12,14 +12,19 @@ export const fetchSingleAnswer = (id) => ({
   id
 });
 
+export const postQuestion = (question) => ({
+  type: "POST_QUESTION",
+  question
+});
+
 export const postAnswer = (answer) => ({
   type: "POST_ANSWER",
   answer
 });
 
-export const postQuestion = (question) => ({
-  type: "POST_QUESTION",
-  question
+export const postComment = (comment) => ({
+  type: "POST_COMMENT",
+  comment
 });
 
 export const receiveSingleAnswer = (answer) => ({
@@ -39,6 +44,11 @@ export const receiveAnswerErrors = (errors) => ({
 
 export const receiveQuestionErrors = (errors) => ({
   type: "RECEIVE_QUESTION_ERRORS",
+  errors
+});
+
+export const receiveCommentErrors = (errors) => ({
+  type: "RECEIVE_COMMENT_ERRORS",
   errors
 });
 

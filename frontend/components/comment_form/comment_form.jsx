@@ -9,7 +9,7 @@ class CommentForm extends React.Component{
       body: "",
       user_location: "",
       user_age: "",
-      question_id: parseInt(this.props.params.id)
+      answer_id: 0
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,7 +36,7 @@ class CommentForm extends React.Component{
 		return(
 			<ul>
 				{this.props.errors.map( (error, i) => (
-					<li key={`error-${i}`} className="answer-error">
+					<li key={`error-${i}`} className="comment-error">
 						{error}
 					</li>
 				))}
@@ -45,7 +45,10 @@ class CommentForm extends React.Component{
 	}
 
   getGuestInputs(){
-
+    <div className="comment-guest-inputs">
+      <input type="text" onChange={this.update("location")} value={this.state.user_location} className="comment-input" placeholder="Location"/>
+      <input type="text" onChange={this.update("user_age")} value={this.state.user_age} className="comment-input" placeholder="Age (optional)"/>
+    </div>
   }
 
   render() {

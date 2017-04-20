@@ -4,6 +4,7 @@ import * as SESSION_ACTIONS from '../actions/session_actions';
 import * as QUESTION_UTILS from '../util/question_api_util';
 import * as ANSWER_UTILS from '../util/answer_api_util';
 import * as VOTE_UTILS from '../util/vote_api_util';
+import * as COMMENT_UTILS from '../util/comment_api_util';
 
 const SessionMiddleware = ({state, dispatch}) => next => action => {
   let error = (errors) => {
@@ -57,6 +58,9 @@ const SessionMiddleware = ({state, dispatch}) => next => action => {
         dispatch(QUESTION_ACTIONS.receiveQuestionErrors(errors.responseJSON.errors));
       };
       QUESTION_UTILS.createQuestion(success, error, action.question);
+      return next(action);
+    case "POST_COMMENT":
+      COMMENT_UTILS.createComment(success, error, action.comment)
       return next(action);
     default:
       return next(action);
