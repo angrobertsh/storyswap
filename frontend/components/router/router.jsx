@@ -17,6 +17,9 @@ class AppRouter extends React.Component{
     this._fetchSingleQuestion = this._fetchSingleQuestion.bind(this);
     this._populateSplash = this._populateSplash.bind(this);
 
+    // <Route path="/user/my_answers" component={ AnswerIndexContainer } onEnter={this._fetchUserAnswers} />
+
+
     this.routerconst = (
       <Router history={ hashHistory } onUpdate={() => window.scrollTo(0, 0)}>
         <Route path="/" component={ App } onEnter={this.props.fetchAllQuestions}>
@@ -42,7 +45,9 @@ class AppRouter extends React.Component{
   _ensureLoggedIn(nextState, replace){
     if(!this.props.currentUser){
       replace('/signup');
+      return false;
     }
+    return true;
   }
 
   _ensureAdmin(nextState, replace){
@@ -60,6 +65,12 @@ class AppRouter extends React.Component{
     this.props.fetchAllQuestions();
     this.props.fetchSingleAnswer(Math.floor(Math.random()*5)+1);
   }
+
+  // _fetchUserAnswers(nextState, replace){
+  //  if(this._ensureLoggedIn(nextState, replace)){
+  //    this.props.getUserAnswers();
+  //  }
+  // }
 
   render(){
     return this.routerconst;

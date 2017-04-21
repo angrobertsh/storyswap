@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import QuestionShow from './question_show';
+import CommentIndex from './comment_index';
+import * as QUESTION_ACTIONS from '../../actions/question_actions';
 import * as VOTE_ACTIONS from '../../actions/vote_actions';
 
 const mapStateToProps = state => ({
+  errors: state.question.commentErrors,
   currentUser: state.session.currentUser,
-  questions: state.question.questions,
   votes: state.session.votes
 });
 
@@ -16,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(QuestionShow);
+)(CommentIndex);

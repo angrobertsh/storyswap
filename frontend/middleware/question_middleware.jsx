@@ -40,14 +40,14 @@ const SessionMiddleware = ({state, dispatch}) => next => action => {
         dispatch(QUESTION_ACTIONS.receiveQuestions(questions));
         dispatch(SESSION_ACTIONS.getVotes());
       }
-      VOTE_UTILS.createUpvote(success, error, vote);
+      VOTE_UTILS.createUpvote(success, error, action.vote);
       return next(action);
     case "EDIT_UPVOTE":
       success = (questions) => {
         dispatch(QUESTION_ACTIONS.receiveQuestions(questions));
         dispatch(SESSION_ACTIONS.getVotes());
       }
-      VOTE_UTILS.updateUpvote(success, error, vote);
+      VOTE_UTILS.updateUpvote(success, error, action.vote);
       return next(action);
     case "POST_QUESTION":
       success = (questions) => {

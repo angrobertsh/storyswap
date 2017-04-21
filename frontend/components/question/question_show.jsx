@@ -14,7 +14,7 @@ class QuestionShow extends React.Component{
     if(Object.keys(this.props.questions).length > 0){
       question = this.props.questions[this.props.params.id];
       if(question.answers){
-        return <AnswerIndex question={question} currentUser={this.props.currentUser} answerVotes={this.props.answerVotes} upvote={this.props.upvote} editUpvote={this.props.editUpvote} />
+        return <AnswerIndex question={question} currentUser={this.props.currentUser} votes={this.props.votes} upvote={this.props.upvote} editUpvote={this.props.editUpvote} />
       }
     }
     return;

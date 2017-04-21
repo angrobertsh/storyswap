@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-import CommentForm from '../comment_form/comment_form';
-import CommentIndex from '../comment/comment_index';
+import CommentIndexContainer from '../comment/comment_index_container';
 
 class AnswerIndexItem extends React.Component {
   constructor(props){
@@ -10,24 +9,47 @@ class AnswerIndexItem extends React.Component {
       showComments: false
     }
     this.handleVote = this.handleVote.bind(this);
+    this.toggleComments = this.toggleComments.bind(this);
+    this.renderComments = this.renderComments.bind(this);
   }
 
   handleVote(e){
-    let vote = {vote: {votable_id: this.props.answer.id, votable_type: "Answer", value: 1}};
-    let userVotes = this.props.answerVotes;
-    let found = userVotes.find((el) => {return el.votable_id === vote.votable_id;})
-    if(found){
-      if(found.value === 1){
-        vote["vote"]["value"] = 0;
+    if(this.props.currentUser){
+      let vote = {votable_id: this.props.answer.id, votable_type: "Answer", value: 1};
+      let userVotes = this.props.votes.answerVotes;
+      let found = userVotes.find((el) => {return el.votable_id === vote.votable_id;})
+      if(found){
+        if(found.value === 1){
+          vote["value"] = 0;
+        }
+        this.props.editUpvote(vote);
+      } else {
+        this.props.upvote(vote);
       }
-      this.props.editUpvote(vote);
     } else {
-      this.props.upvote(vote);
+      alert("Please log in to like answers");
+    }
+  }
+
+  toggleComments(e){
+    this.setState({showComments: !this.state["showComments"]});
+  }
+
+  renderComments(){
+    if(this.state["showComments"]){
+      return (<CommentIndexContainer answer={this.props.answer} />);
+    } else {
+      return;
     }
   }
 
   render(){
     let answer = this.props.answer
+    let comments = this.renderComments();
+    let numHearts = 0;
+    this.props.answer.votes.forEach((el) => {
+      numHearts += el.value;
+    });
 
     return (
       <div className="answer">
@@ -41,16 +63,17 @@ class AnswerIndexItem extends React.Component {
           <div className="answer-author-info answer-author-location">
             { answer.user_location }
           </div>
-          <div className="answer-author-info answer-author-location">
+          <div className="answer-author-info answer-author-age">
             { answer.user_age }
           </div>
         </div>
         <div className="answer-interactions">
-          <div className="answer-upvote">Heart</div>
-          <div className="answer-comments">Comments</div>
+          <div className="answer-upvote" onClick={this.handleVote}> { numHearts } Hearts</div>
+          <div className="answer-comments" onClick={this.toggleComments} > { answer.comments.length } Comments</div>
           <div className="answer-share">Share</div>
         </div>
         <div className="answer-comments">
+          { comments }
         </div>
       </div>
     );

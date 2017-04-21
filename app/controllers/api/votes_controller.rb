@@ -51,6 +51,8 @@ class Api::VotesController < ApplicationController
   def render_question
     if vote_params[:votable_type] == "Answer"
       @question = Answer.find_by_id(vote_params[:votable_id]).question
+    elsif vote_params[:votable_type] == "Comment"
+      @question = Comment.find_by_id(vote_params[:votable_id]).question
     else
       @question = Question.find_by_id(vote_params[:votable_id])
     end

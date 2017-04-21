@@ -12,7 +12,7 @@ class AnswerIndex extends React.Component{
   renderAnswers(){
     let answers = this.props.question.answers;
     return answers.map((answer) => {
-      return <AnswerIndexItem key={answer.id} answer={answer} currentUser={this.props.currentUser} answerVotes={this.props.answerVotes} upvote={this.props.upvote} editUpvote={this.props.editUpvote}/>
+      return <AnswerIndexItem key={answer.id} answer={answer} currentUser={this.props.currentUser} votes={this.props.votes} upvote={this.props.upvote} editUpvote={this.props.editUpvote}/>
     });
   }
 

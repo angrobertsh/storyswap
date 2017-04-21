@@ -29,6 +29,7 @@ class CommentForm extends React.Component{
     } else {
       comment["user_age"] = null;
     }
+    comment["answer_id"] = this.props.answerId;
     this.props.postComment(comment);
 	}
 
@@ -52,7 +53,7 @@ class CommentForm extends React.Component{
   }
 
   render() {
-    guestInputs = this.getGuestInputs();
+    let guestInputs = this.getGuestInputs();
     return (
       <div className="comment-form-container">
         <form onSubmit={this.handleSubmit} className="comment-form">
