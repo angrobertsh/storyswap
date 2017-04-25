@@ -1,0 +1,415 @@
+$brown: #FF3321;
+$cream: white;
+$wheat: #FFFFE6;
+
+$titles: 2rem;
+$subtitles: 1.5rem;
+$subtext: .75rem;
+
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+textarea{
+	box-sizing: border-box;
+}
+
+// App
+
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Topbar
+
+.greeting-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: purple;
+  align-items: center;
+}
+
+.greeting-container > * {
+}
+
+.greeting-auth {
+  display: flex;
+}
+
+.greeting-title {
+	padding: 18px;
+}
+
+.greeting-welcome {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.greeting-auth-button {
+  padding: 18px;
+  background-color: red;
+}
+
+// Splash
+
+.splash {
+  display: flex;
+  justify-content: center;
+}
+
+.answer-splash {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 35%;
+}
+
+.answer-splash > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer-splash-question {
+  padding: 30px;
+  font-size: 1.5em;
+}
+
+.splash #questions-index-container {
+  padding: 30px;
+  max-width: 35%;
+}
+
+@media only screen and (max-width: 800px) {
+  .splash{
+    display: block;
+    width: 100%;
+  }
+
+  .answer-splash {
+    max-width: 100%;
+  }
+
+  .splash #questions-index-container {
+    padding: 5%;
+    max-width: 100%;
+  }
+
+}
+
+// Answer
+
+.answer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  box-sizing: border-box;
+	margin: 20px;
+}
+
+.answer > * {
+  display: flex;
+  box-sizing: border-box;
+}
+
+.answer-body {
+  padding: 20px 20px 10px 20px;
+  border: 1px solid blue;
+}
+
+.answer-author {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px 0 10px;
+  border: 1px solid red;
+}
+
+.answer-author > * {
+  padding: 10px;
+}
+
+.answer-interactions {
+  border: 1px solid purple;
+  padding: 5px 10px 5px 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.answer-interactions > * {
+  padding: 5px 10px 5px 10px;
+}
+
+// Questions Index
+
+#questions-index-container {
+  max-width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.questions-index-header {
+  padding: 15px;
+  font-size: 1.25em;
+}
+
+#questions-index {
+  border: 1px solid black;
+  padding: 10px 0 10px 0;
+}
+
+.question {
+  border: 1px solid black;
+  padding: 10px 20px 10px 20px;
+}
+
+// Answer-thanks
+
+
+.answer-thanks {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.answer-thanks-title {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+}
+
+.more-button {
+	padding: 20px;
+	margin: 20px;
+}
+
+// Answer Index
+
+
+
+#questions-show-container{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px;
+}
+
+#answer-index {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 30px;
+	max-width: 60%;
+}
+
+// 40 px padding
+
+
+// Forms
+
+.submit-button {
+
+}
+
+.session-form-container {
+	padding: 40px;
+}
+
+.session-form {
+	padding: 50px;
+	border: 1px black solid;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.session-greet {
+	margin-bottom: 30px;
+}
+
+.session-input {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.form-or-thanks-container {
+	padding: 40px;
+	max-width: 80%;
+}
+
+.errors {
+	display: flex;
+	flex-direction: column;
+}
+
+.answer-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.answer-input-container {
+	display: flex;
+	flex-direction: column;
+	width: 800px;
+	align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .answer-input-container{
+    display: block;
+    width: 100%;
+  }
+
+}
+
+.answer-guest-inputs {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
+.answer-input {
+	width: 120px;
+	margin: 10px 0 10px 5px;
+}
+
+.answer-form-title {
+	padding: 20px;
+}
+
+.answer-input-body {
+	background-attachment: local;
+	background-image:
+		linear-gradient(to right, white 10px, transparent 10px),
+		linear-gradient(to left, white 10px, transparent 10px),
+		repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
+	line-height: 31px;
+	padding: 8px 10px;
+	height: 93px;
+	width: 100%;
+	max-width: 780px;
+}
+
+// Comments
+
+#comments-index-header{
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	width: 100%;
+}
+
+.comment-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.comment-inputs {
+	display: flex;
+	justify-content: space-between;
+}
+
+.comment-input-body{
+	width: 100%;
+}
+
+.comment-form-container{
+	width: 100%;
+	margin: 10px 0 5px 0;
+}
+
+.comment-guest-inputs{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.comment-inputs {
+	padding: 10px 0 10px 0;
+}
+
+.comment-input {
+	width: 120px;
+	margin: 0 5px 0 0;
+}
+
+.comment {
+	margin: 10px 0 10px 0;
+}
+
+.comment-info {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.comment-author {
+	display: flex;
+}
+
+.comment-interactions {
+	width: 20%;
+}
+
+.comment-upvote {
+	display: flex;
+	justify-content: flex-end;
+}

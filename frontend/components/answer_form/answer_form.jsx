@@ -20,7 +20,7 @@ class AnswerForm extends React.Component{
   }
 
   update(field){
-		return e => { this.setState({[field]: e.currentTarget.value }); };
+		return e => {this.setState({[field]: e.currentTarget.value }); };
 	}
 
   handleSubmit(e){
@@ -52,7 +52,7 @@ class AnswerForm extends React.Component{
     } else {
       return (
         <div className="answer-guest-inputs">
-          <input type="text" onChange={this.update("location")} value={this.state.user_location} className="answer-input" placeholder="Location"/>
+          <input type="text" onChange={this.update("user_location")} value={this.state.user_location} className="answer-input" placeholder="Location"/>
           <input type="text" onChange={this.update("user_age")} value={this.state.user_age} className="answer-input" placeholder="Age (optional)"/>
         </div>
       )
@@ -75,6 +75,7 @@ class AnswerForm extends React.Component{
               <div className="answer-thanks">
                 <div className="answer-thanks-title">Thanks for sharing! You were the first to answer this question!</div>
                 <Link to={`question`}><button className="answer-index-button">More Questions</button></Link>
+                <Link to={`question/${this.props.params.id}`}><button className="more-button">See Your Answer</button></Link>
               </div>
             );
           } else {
@@ -84,7 +85,7 @@ class AnswerForm extends React.Component{
               <div className="answer-thanks">
                 <div className="answer-thanks-title">Thanks for sharing! Check out how someone else has answered:</div>
                 <AnswerIndexItem key={answer.id} answer={answer} currentUser={this.props.currentUser} answerVotes={this.props.answerVotes} upvote={this.props.upvote} editUpvote={this.props.editUpvote}/>
-                <Link to={`question/${this.props.params.id}`}><button className="more-button">See More</button></Link>
+                <Link to={`question/${this.props.params.id}`}><button className="more-button">See Answers</button></Link>
               </div>
             );
           }
@@ -95,11 +96,10 @@ class AnswerForm extends React.Component{
           <div className="answer-form-container">
     				<form onSubmit={this.handleSubmit} className="answer-form">
               <span className="answer-form-title"> { title } </span>
-              <span className="answer-errors">{ this.renderErrors() }</span>
-              <div className="answer-input">
+              <span className="answer-errors errors">{ this.renderErrors() }</span>
+              <div className="answer-input-container">
+                <textarea onChange={this.update("body")} value={this.state.body} className="answer-input-body" placeholder="Your Story (200 character minimum)"/>
                 { location }
-                <input type="text" onChange={this.update("body")} value={this.state.body} className="answer-input" placeholder="Your Story (200 character minimum)"/>
-                <br/>
                 <button className="submit-button">Submit</button>
               </div>
             </form>

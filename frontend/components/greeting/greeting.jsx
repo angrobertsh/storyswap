@@ -20,15 +20,19 @@ class Greeting extends React.Component{
           <Link to={"/"}><div className="greeting-title">The Story Swap</div></Link>
           <div className="greeting-welcome">Welcome {this.props.currentUser.username}!</div>
           { this.admin() }
-          <div className="greeting-auth-button" onClick={this.props.logout}>Logout</div>
+          <div className="greeting-auth">
+            <div className="greeting-auth-button" onClick={this.props.logout}>Logout</div>
+          </div>
         </div>
       );
     } else {
       return (
         <div className="greeting-container">
           <Link to={"/"}><div className="greeting-title">The Story Swap</div></Link>
-          <Link to={"/signup"}><div className="greeting-auth-button">Signup</div></Link>
-          <Link to={"/login"}><div className="greeting-auth-button">Login</div></Link>
+          <div className="greeting-auth">
+            <Link to={"/signup"}><div className="greeting-auth-button">Signup</div></Link>
+            <Link to={"/login"}><div className="greeting-auth-button">Login</div></Link>
+          </div>
         </div>
       )
     }

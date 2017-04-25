@@ -11,6 +11,7 @@ class AnswerIndexItem extends React.Component {
     this.handleVote = this.handleVote.bind(this);
     this.toggleComments = this.toggleComments.bind(this);
     this.renderComments = this.renderComments.bind(this);
+    this.checkAge = this.checkAge.bind(this);
   }
 
   handleVote(e){
@@ -43,6 +44,17 @@ class AnswerIndexItem extends React.Component {
     }
   }
 
+  checkAge(answer){
+    if(answer.user_age){
+      return (<div className="answer-author-info answer-author-age">
+        Age { answer.user_age }
+      </div>)
+    } else {
+      return (<div className="answer-author-info answer-author-age">
+      </div>)
+    }
+  }
+
   render(){
     let answer = this.props.answer
     let comments = this.renderComments();
@@ -50,6 +62,12 @@ class AnswerIndexItem extends React.Component {
     this.props.answer.votes.forEach((el) => {
       numHearts += el.value;
     });
+    if(numHearts === 1){
+      numHearts = numHearts.toString() + " Heart";
+    } else {
+      numHearts = numHearts.toString() + " Hearts";
+    }
+    let age = this.checkAge(answer);
 
     return (
       <div className="answer">
@@ -63,14 +81,11 @@ class AnswerIndexItem extends React.Component {
           <div className="answer-author-info answer-author-location">
             { answer.user_location }
           </div>
-          <div className="answer-author-info answer-author-age">
-            { answer.user_age }
-          </div>
+          { age }
         </div>
         <div className="answer-interactions">
-          <div className="answer-upvote" onClick={this.handleVote}> { numHearts } Hearts</div>
+          <div className="answer-upvote" onClick={this.handleVote}> { numHearts } </div>
           <div className="answer-comments" onClick={this.toggleComments} > { answer.comments.length } Comments</div>
-          <div className="answer-share">Share</div>
         </div>
         <div className="answer-comments">
           { comments }

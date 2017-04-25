@@ -57,14 +57,12 @@ class SessionForm extends React.Component{
   otherAction (formType) {
     if (formType === "login") {
       return (<div className="session-greet">
-        <h3>LOG IN</h3> <br/>
-        <p className="session-whisper">(or <Link to="/signup">sign up</Link>)</p>
-        </div>);
+        Log in (or <Link to="/signup">sign up</Link>)
+      </div>);
     } else {
       return (<div className="session-greet">
-        <h3>SIGN UP</h3><br/>
-        <p className="session-whisper">(or <Link to="/login">log in</Link>)</p>
-        </div>);
+        Sign up (or <Link to="/login">log in</Link>)
+      </div>);
     }
   }
 
@@ -89,14 +87,11 @@ class SessionForm extends React.Component{
       <div className="session-form-container">
 				<form onSubmit={this.handleSubmit} className="session-form">
           { otherLink }
-          <span className="session-errors">{ this.renderErrors() }</span>
+          <span className="session-errors errors">{ this.renderErrors() }</span>
           <div className="session-input">
             <input type="text" onChange={this.update("username")} value={this.state.username} className="session-input" placeholder="Username"/>
-            <br/>
             <input type="password" onChange={this.update("password")} value={this.state.password} className="session-input" placeholder="Password"/>
-            <br/>
             { location }
-            <br/>
             <button className="submit-button">Submit</button>
           </div>
         </form>

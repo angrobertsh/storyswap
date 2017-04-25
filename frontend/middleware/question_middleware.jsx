@@ -60,6 +60,9 @@ const SessionMiddleware = ({state, dispatch}) => next => action => {
       QUESTION_UTILS.createQuestion(success, error, action.question);
       return next(action);
     case "POST_COMMENT":
+      error = (errors) => {
+        dispatch(QUESTION_ACTIONS.receiveCommentErrors(errors.responseJSON.errors));
+      };
       COMMENT_UTILS.createComment(success, error, action.comment)
       return next(action);
     default:

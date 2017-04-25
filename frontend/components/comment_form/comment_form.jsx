@@ -46,10 +46,19 @@ class CommentForm extends React.Component{
 	}
 
   getGuestInputs(){
-    <div className="comment-guest-inputs">
-      <input type="text" onChange={this.update("location")} value={this.state.user_location} className="comment-input" placeholder="Location"/>
-      <input type="text" onChange={this.update("user_age")} value={this.state.user_age} className="comment-input" placeholder="Age (optional)"/>
-    </div>
+    if(this.props.currentUser){
+      return (<div className="comment-inputs">
+        <button className="submit-button">Submit</button>
+      </div>)
+    } else {
+      return (<div className="comment-inputs">
+        <div className="comment-guest-inputs">
+          <input type="text" onChange={this.update("user_location")} value={this.state.user_location} className="comment-input" placeholder="Location"/>
+          <input type="text" onChange={this.update("user_age")} value={this.state.user_age} className="comment-input" placeholder="Age (optional)"/>
+        </div>
+        <button className="submit-button">Submit</button>
+      </div>);
+    }
   }
 
   render() {
@@ -57,11 +66,10 @@ class CommentForm extends React.Component{
     return (
       <div className="comment-form-container">
         <form onSubmit={this.handleSubmit} className="comment-form">
-          <span className="comment-errors">{ this.renderErrors() }</span>
-          <div className="comment-input">
+          <span className="comment-errors errors">{ this.renderErrors() }</span>
+          <div className="comment-input-container">
+            <textarea onChange={this.update("body")} value={this.state.body} className="comment-input-body" placeholder="Comment"/>
             { guestInputs }
-            <input type="text" onChange={this.update("body")} value={this.state.body} className="comment-input" placeholder="Comment"/>
-            <button className="submit-button">Submit</button>
           </div>
         </form>
       </div>

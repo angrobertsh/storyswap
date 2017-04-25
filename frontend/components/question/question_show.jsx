@@ -11,22 +11,22 @@ class QuestionShow extends React.Component{
 
   createAnswerIndex(){
     let question;
+    let answerIndex = []
     if(Object.keys(this.props.questions).length > 0){
       question = this.props.questions[this.props.params.id];
+      answerIndex.push(<div className="questions-show-header" key={"q"+question.id}> {question.title} </div>)
       if(question.answers){
-        return <AnswerIndex question={question} currentUser={this.props.currentUser} votes={this.props.votes} upvote={this.props.upvote} editUpvote={this.props.editUpvote} />
+        answerIndex.push(<AnswerIndex key={"ai1"} question={question} currentUser={this.props.currentUser} votes={this.props.votes} upvote={this.props.upvote} editUpvote={this.props.editUpvote} />)
       }
     }
-    return;
+    return answerIndex;
   }
 
   render(){
     let answerIndex = this.createAnswerIndex();
     return (
-      <div id="questions-show-header">
-        <div id="answer-index">
-          { answerIndex }
-        </div>
+      <div id="questions-show-container">
+        { answerIndex }
       </div>
     );
   }

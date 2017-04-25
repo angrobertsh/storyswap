@@ -18,14 +18,13 @@ class AnswerIndex extends React.Component{
 
   render(){
     return (
-      <div id="answers-index-header">Answers:
-        <div id="answers-index">
+      <div id="answer-index">
+        <div id="answers-index-header">Answers:</div>
+        <div id="answers">
           { this.renderAnswers() }
         </div>
         <div id="answers-index-nav">
           <Link to={"/question"}><button className="answers-button">New Question</button></Link>
-          <button className="answers-button">Messages</button>
-          <button className="answers-button">Past Swaps</button>
         </div>
       </div>
     );

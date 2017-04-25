@@ -43,9 +43,7 @@ class QuestionForm extends React.Component{
           <span className="question-errors">{ this.renderErrors() }</span>
           <div className="question-input">
             <input type="text" onChange={this.update("title")} value={this.state.title} className="question-input" placeholder="Title"/>
-            <br/>
             <input type="text" onChange={this.update("description")} value={this.state.description} className="question-input" placeholder="Description (optional)"/>
-            <br/>
             <button className="submit-button">Submit</button>
           </div>
         </form>

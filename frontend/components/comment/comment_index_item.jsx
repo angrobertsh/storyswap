@@ -34,25 +34,33 @@ class CommentIndexItem extends React.Component {
     this.props.comment.votes.forEach((el) => {
       numHearts += el.value;
     });
+    let age;
+    if(comment.user_age){
+      age = "Age " + comment.user_age
+      age = (
+        <div className="comment-author-info">
+          { comment.username + ", " + comment.user_location + ', ' + age }
+        </div>)
+      } else {
+      age = (
+        <div className="comment-author-info">
+          { comment.username + ", " + comment.user_location }
+        </div>
+      )
+    }
 
     return (
       <div className="comment">
         <div className="comment-body">
           { comment.body }
         </div>
-        <div className="comment-author">
-          <div className="comment-author-info comment-author-username">
-            { comment.username }
+        <div className="comment-info">
+          <div className="comment-author">
+            { age }
           </div>
-          <div className="comment-author-info comment-author-location">
-            { comment.user_location }
+          <div className="comment-interactions">
+            <div className="comment-upvote" onClick={ this.handleVote }> { numHearts } Hearts </div>
           </div>
-          <div className="comment-author-info comment-author-age">
-            { comment.user_age }
-          </div>
-        </div>
-        <div className="comment-interactions">
-          <div className="comment-upvote" onClick={ this.handleVote }> { numHearts } Hearts </div>
         </div>
       </div>
     );
