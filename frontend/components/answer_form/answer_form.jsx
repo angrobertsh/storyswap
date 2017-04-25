@@ -10,7 +10,8 @@ class AnswerForm extends React.Component{
       body: "",
       user_location: "",
       user_age: "",
-      question_id: parseInt(this.props.params.id)
+      question_id: parseInt(this.props.params.id),
+      answer_display: null
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,12 +80,18 @@ class AnswerForm extends React.Component{
               </div>
             );
           } else {
-            let rand = Math.floor(Math.random()*question.answers.length);
-            let answer = question.answers[rand]
+            let answer;
+            if(this.state["answer_display"]){
+              answer = question.answers[this.state["answer_display"]]
+            } else {
+              let rand = Math.floor(Math.random()*question.answers.length);
+              this.setState({answer_display: rand})
+              answer = question.answers[rand]
+            }
             return (
               <div className="answer-thanks">
                 <div className="answer-thanks-title">Thanks for sharing! Check out how someone else has answered:</div>
-                <AnswerIndexItem key={answer.id} answer={answer} currentUser={this.props.currentUser} answerVotes={this.props.answerVotes} upvote={this.props.upvote} editUpvote={this.props.editUpvote}/>
+                <AnswerIndexItem key={answer.id} answer={answer} currentUser={this.props.currentUser} votes={this.props.votes} upvote={this.props.upvote} editUpvote={this.props.editUpvote}/>
                 <Link to={`question/${this.props.params.id}`}><button className="more-button">See Answers</button></Link>
               </div>
             );

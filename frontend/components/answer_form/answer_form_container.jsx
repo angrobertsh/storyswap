@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
   answers: state.session.answers,
   questions: state.question.questions,
-  answerVotes: state.session.votes
+  votes: state.session.votes
 });
 
 const mapDispatchToProps = dispatch => ({
